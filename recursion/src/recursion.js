@@ -8,7 +8,8 @@
  * @returns {number}
  */
 function factorial(n) {
-
+    if(n === 0) return 1;
+    return n * factorial(n-1);
 }
 
 /**
@@ -17,7 +18,12 @@ function factorial(n) {
  * @returns {number}
  */
 function factorialIter(n) {
-
+    var result = 1;
+    if(n === 1 || n === 0) return 1;
+    for(var i = n; i > 1; i--){
+        result *= i;
+    }
+    return result;
 }
 
 /**
@@ -26,7 +32,13 @@ function factorialIter(n) {
  * @returns {string}
  */
 function reverse(str) {
-
+    if(str === "") return "";
+    if(str.length === 1) return str;
+    return str.substring(str.length - 1) + reverse(str.substring(0, str.length - 1));
+    
+    //Answer using slice
+    // if(str.length === 0) return str;
+    //return reverse(str.slice(1)) + str[0]
 }
 
 /**
@@ -35,7 +47,12 @@ function reverse(str) {
  * @returns {string}
  */
 function reverseIter(str) {
-
+    var result = "";
+    if( str.length === 0) return "";
+    for(var i = str.length - 1; i >=0 ; i--){
+        result += str[i];
+    }
+    return result;
 }
 
 /**
@@ -46,7 +63,9 @@ function reverseIter(str) {
  * @param {number} n - term number
  */
 function fib(n) {
-
+    if(n === 1) return 0;
+    if(n === 2) return 1;
+    return fib(n-1) + fib(n - 2);
 }
 
 /**
@@ -54,7 +73,8 @@ function fib(n) {
  * @param {number} n - term number
  */
 function fibIter(n) {
-
+  
+  
 }
 
 /**
@@ -65,9 +85,13 @@ function fibIter(n) {
  * @returns {boolean}
  */
 function isPalindrome(str) {
-
+    if(str.length < 2 ) return true;
+    if(str[0] === str[str.length - 1]){
+        return isPalindrome(str.substring(1, str.length - 1));
+    } else {
+        return false;
+    } 
 }
-
 /**
  * Now do it ITERATIVELY.
  * @param {string} str
@@ -102,7 +126,6 @@ function binarySearchIter(arr, target) {
 /* ========================================================
                       T E S T S
 # ======================================================== */
-
 
 var expect = window.chai.expect;
 var describe = window.describe;
